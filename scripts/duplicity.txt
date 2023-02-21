@@ -1,0 +1,5 @@
+duplicity $SOURCE_DIR b2://account_id[:application_key]@bucket_name/[some_dir/]
+
+duplicity restore --file-to-restore  b2://account_id[:application_key]@bucket_name/[some_dir/] $TARGET_DIR
+
+duplicity list-current-files b2://account_id[:application_key]@bucket_name/[some_dir/]
