@@ -23,6 +23,9 @@ cookies = {"JSESSIONID": jsessionid, "Genios-Auth": genios_auth}
 year, month, day = map(int, time.strftime("%Y %m %d").split())
 month = '{:02d}'.format(month)
 day = '{:02d}'.format(day)
+url = "https://" + os.getenv("HOST") + "/stream/dbBoundFileConsole"
+requests.post(url, data={"id": "HB__:{year}:{day}{month}{year}".format(year=year, month=month, day=day),
+                         "fileName": "HB/HEFTE/HB_{year}_{day}{month}{year}.pdf".format(year=year, month=month, day=day)}, cookies=cookies)
 url = "https://" + os.getenv("HOST") + "/stream/dbBoundFile?id=HB__:{year}:{day}{month}{year}&fileName=HB%2FHEFTE%2FHB_{year}_{day}{month}{year}.pdf".format(year = year, month = month, day= day)
 pdf = requests.get(url, cookies=cookies)
 
