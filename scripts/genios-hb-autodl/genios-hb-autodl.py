@@ -2,6 +2,7 @@ import requests
 import os
 import time
 from dotenv import load_dotenv
+import datetime
 
 load_dotenv()
 
@@ -20,9 +21,12 @@ data = {
 genios_auth = requests.post("https://" + os.getenv("HOST") + "/formEngine/doAction", data=data, cookies={"JSESSIONID": jsessionid}).cookies["GeniosAuth"]
 
 cookies = {"JSESSIONID": jsessionid, "Genios-Auth": genios_auth}
-year, month, day = map(int, time.strftime("%Y %m %d").split())
-month = '{:02d}'.format(month)
-day = '{:02d}'.format(day)
+today = datetime.datetime.today()
+while today.weekday() >= 5:
+    today = today - datetime.timedelta(days=1)
+year = today.year
+month = '{:02d}'.format(today.month)
+day = '{:02d}'.format(today.day)
 url = "https://" + os.getenv("HOST") + "/stream/dbBoundFileConsole"
 requests.post(url, data={"id": "HB__:{year}:{day}{month}{year}".format(year=year, month=month, day=day),
                          "fileName": "HB/HEFTE/HB_{year}_{day}{month}{year}.pdf".format(year=year, month=month, day=day)}, cookies=cookies)
