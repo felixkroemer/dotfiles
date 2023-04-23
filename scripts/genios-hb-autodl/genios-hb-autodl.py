@@ -3,6 +3,7 @@ import os
 import time
 from dotenv import load_dotenv
 import datetime
+import subprocess
 
 load_dotenv()
 
@@ -36,5 +37,7 @@ pdf = requests.get(url, cookies=cookies)
 if pdf.status_code != 200:
     print("Error {}".format(pdf.status_code))
 else:
-    with open(os.path.join(os.environ["HOMEPATH"], "Desktop", "HB_{}.{}.{}.pdf".format(day, month, year)), "wb") as f:
+    path = os.path.join(os.environ["HOMEPATH"], "Desktop", "HB_{}.{}.{}.pdf".format(day, month, year))
+    with open(path, "wb") as f:
         f.write(pdf.content)
+    subprocess.Popen([path], shell=True)
