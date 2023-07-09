@@ -17,7 +17,7 @@
 {
 
     imports: [
-        skin.hjson
+        skins/dark-blue.hjson
     ]
 
     ###############################################################
@@ -142,9 +142,16 @@
     verbs: [
 
     {
-    key: left
-    internal: ":parent"
+        key: left
+        internal: ":parent"
     }
+
+    {
+		apply_to: directory
+		key: "shift-enter"
+		external: "cd {file}"
+		from_shell: true
+	}
 
     # Example 1: launching `tail -n` on the selected file (leaving broot)
     # {
