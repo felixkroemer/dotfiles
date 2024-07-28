@@ -1,5 +1,5 @@
 duplicity $SOURCE_DIR b2://account_id[:application_key]@bucket_name/[some_dir/]
 
-duplicity restore --file-to-restore  b2://account_id[:application_key]@bucket_name/[some_dir/] $TARGET_DIR
+duplicity -v 8 remove-all-but-n-full 1 b2://account_id[:application_key]@bucket_name
 
 duplicity list-current-files b2://account_id[:application_key]@bucket_name/[some_dir/]
