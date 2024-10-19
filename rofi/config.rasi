@@ -1,1 +1,10 @@
-@theme "solarized"
+@import "Manjaro"
+
+window {
+  width: 50em;
+}
+
+listview {
+  border: None;
+  scrollbar: false;
+}
