@@ -1,4 +1,4 @@
-@import "Manjaro"
+@theme "/usr/share/rofi/themes/Arc-Dark.rasi"
 
 window {
   width: 50em;
