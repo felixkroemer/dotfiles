@@ -1,5 +1,3 @@
-@import "Manjaro"
-
 window {
   width: 50em;
 }
