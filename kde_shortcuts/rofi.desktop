@@ -1,0 +1,6 @@
+[Desktop Entry]
+Exec=rofi -show drun
+Name=Rofi
+NoDisplay=true
+StartupNotify=false
+Type=Application
